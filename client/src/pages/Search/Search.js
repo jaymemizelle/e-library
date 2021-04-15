@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Form from "../../components/Form/Form";
-import 'dotenv/config';
+import axios from "axios";
+require("dotenv").config();
 
 function Search() {
   const [books, setBooks] = useState("");
@@ -8,18 +9,19 @@ function Search() {
   useEffect(() => {
     // Google Books API call.
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
-    fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=pride+prejudice&download=epub&key=${apiKey}`
-    )
-      .then((response) => console.log(response))
-    //   .then((result) => {
-    //     this.setBooks({ books: result.items });
-    //   });
+    axios.get(
+        `https://www.googleapis.com/books/v1/volumes?q=pride+prejudice&download=epub&key=${apiKey}`
+      )
+      .then((res) => {
+        console.log(res)
+        const book = res.items;
+        setBooks({ books: book });
+      });
   }, []);
+  const handleChange = (e) =>
+    setBooks({ ...books, setBooks: e.target.value.trim() });
 
-  const handleSearch = () => {
-    console.log("our books are: ", books);
-  }
+  const handleSearch = () => console.log("our books are: ", books);
 
   const saveBook = () => {
     fetch("api/books", {
@@ -39,6 +41,7 @@ function Search() {
       placeholder="Search for a book!"
       buttonName="search"
       onClick={handleSearch}
+      onChange={handleChange}
     />
   );
 }
