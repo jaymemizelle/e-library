@@ -9,6 +9,7 @@ function Search() {
   useEffect(() => {
     // Google Books API call.
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
+    console.log("Api key is", apiKey);
     axios.get(
         `https://www.googleapis.com/books/v1/volumes?q=pride+prejudice&download=epub&key=${apiKey}`
       )
