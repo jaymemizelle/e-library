@@ -9,33 +9,22 @@ function Search() {
   useEffect(() => {
     // Google Books API call.
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
-    console.log("Api key is", apiKey);
     axios.get(
         `https://www.googleapis.com/books/v1/volumes?q=pride+prejudice&download=epub&key=${apiKey}`
       )
       .then((res) => {
-        console.log(res)
-        const book = res.items;
+        console.log(res.data.items[0].searchInfo.textSnippet)
+        const book = res.data.items[0].searchInfo.textSnippet;
         setBooks({ books: book });
       });
   }, []);
+
   const handleChange = (e) =>
     setBooks({ ...books, setBooks: e.target.value.trim() });
 
   const handleSearch = () => console.log("our books are: ", books);
 
-  const saveBook = () => {
-    fetch("api/books", {
-      method: "POST",
-      body: JSON.stringify({ books }),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      // .then(data => triggerReUpload(data))
-      .catch((err) => alert(err));
-  };
+
 
   return (
     <Form
