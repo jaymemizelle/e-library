@@ -14,6 +14,7 @@ function Search() {
       link: "",
     },
   ]);
+  const [bookName, setBookName] = useState('');
 
   useEffect(() => {
     // Google Books API call.
@@ -35,15 +36,15 @@ function Search() {
       .catch((err) => console.log(err));
   }, []);
 
-  // const handleChange = (e) =>
-  //   setBooks(e.target.value.trim());
-  //   console.log("our book on handle change is: ", books);
+  const handleChange = (e) =>
+    setBookName(e.target.value.trim());
+    console.log("our book on handle change is: ", bookName);
 
   const handleSearch = (e) => {
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
     axios
       .get(
-        `https://www.googleapis.com/books/v1/volumes?q=${books.title}&download=epub&key=${apiKey}`
+        `https://www.googleapis.com/books/v1/volumes?q=${bookName}&download=epub&key=${apiKey}`
       )
       .then((res) => {
         console.log(res);
@@ -80,9 +81,19 @@ function Search() {
         placeholder="Search for a book!"
         buttonName="search"
         onClick={handleSearch}
-        // onChange={handleChange}
+        onChange={handleChange}
       />
       <BookCard imageUrl={books.image} title={books.title} description={books.description} preview={books.link} author={books.author} onClick={saveBook}/>
+      {/* {books.map((book) => (
+        <BookCard
+          imageUrl={book.image}
+          title={book.title}
+          description={book.description}
+          preview={book.link}
+          author={book.author}
+          onClick={saveBook}
+        />
+      ))} */}
     </div>
   );
 }
