@@ -37,10 +37,9 @@ function Search() {
 
   // const handleChange = (e) =>
   //   setBooks(e.target.value.trim());
-  //   console.log(books);
+  //   console.log("our book on handle change is: ", books);
 
   const handleSearch = (e) => {
-    setBooks(e.target.value.trim());
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
     axios
       .get(
