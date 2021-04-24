@@ -16,7 +16,8 @@ function Library() {
     return (
         <div>
             <h2>Saved Books</h2>
-            {userBooksState.map((book) => <BookCard imageUrl={book.image} title={book.title} description={book.description} preview={book.link} author={book.author}/>)}
+            {/* {userBooksState.map((book) => <BookCard imageUrl={book.image} title={book.title} description={book.description} preview={book.link} author={book.author}/>)} */}
+            <BookCard imageUrl={userBooksState.image} title={userBooksState.title} description={userBooksState.description} preview={userBooksState.link} author={userBooksState.author}/>
         </div>
     )
 }
