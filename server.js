@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
-app.use('/api/books', BooksApiRoutes)
+app.use('/api', BooksApiRoutes)
 
 
 // Send every other request to the React app

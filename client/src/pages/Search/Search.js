@@ -41,6 +41,20 @@ function Search() {
 
   const handleSearch = () => console.log("our books are: ", books);
 
+  const saveBook = async (e) => {
+    console.log(books);
+    await axios
+      .post('/api/book', {
+        title: books.title,
+        image: books.image,
+        author: books.author,
+        description: books.description,
+        link: books.link
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div>
       <Form
@@ -49,7 +63,7 @@ function Search() {
         onClick={handleSearch}
         onChange={handleChange}
       />
-      <BookCard imageUrl={books.image} title={books.title} description={books.description} preview={books.link} />
+      <BookCard imageUrl={books.image} title={books.title} description={books.description} preview={books.link} author={books.author} />
     </div>
   );
 }

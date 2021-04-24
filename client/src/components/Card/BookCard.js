@@ -18,7 +18,7 @@ const useStyles = makeStyles({
   },
 });
 
-function BookCard({ title, description, imageUrl, imgTitle, preview }) {
+function BookCard({ title, description, imageUrl, imgTitle, preview, onClick, author }) {
   const classes = useStyles();
 
   return (
@@ -32,6 +32,7 @@ function BookCard({ title, description, imageUrl, imgTitle, preview }) {
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             {title}
+            <p>{author}</p>
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             {description}
@@ -44,7 +45,7 @@ function BookCard({ title, description, imageUrl, imgTitle, preview }) {
             View
           </Button>
         </a>
-        <Button size="small" color="primary">
+        <Button onClick={onClick} size="small" color="primary">
           Save
         </Button>
       </CardActions>

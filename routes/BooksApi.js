@@ -1,7 +1,7 @@
 const Router = require("express").Router();
 const Book = require("../models/Book");
 
-Router.get("/", async (req, res) => {
+Router.get("/books", async (req, res) => {
     try {
         console.log("we are getting to get all books");
         const books = await Book.find();
@@ -13,7 +13,7 @@ Router.get("/", async (req, res) => {
     }
 });
 
-Router.post("/", async (req, res) => {
+Router.post("/book", async (req, res) => {
     try {
         console.log("we got a book with: ", req.body);
         const book = await Book.create(req.body);
