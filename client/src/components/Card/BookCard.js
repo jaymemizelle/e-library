@@ -8,6 +8,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import "./BookCard.css";
+import { useLocation } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -18,8 +19,18 @@ const useStyles = makeStyles({
   },
 });
 
-function BookCard({ title, description, imageUrl, imgTitle, preview, onClick, author }) {
+function BookCard({
+  title,
+  description,
+  imageUrl,
+  imgTitle,
+  preview,
+  onClick,
+  author,
+}) {
   const classes = useStyles();
+
+  const location = useLocation();
 
   return (
     <Card className={classes.root}>
@@ -40,14 +51,18 @@ function BookCard({ title, description, imageUrl, imgTitle, preview, onClick, au
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <a target="_blank" href={preview}>
+        <a rel="noopener noreferrer" target="_blank" href={preview}>
           <Button size="small" color="primary">
             View
           </Button>
         </a>
-        <Button onClick={onClick} size="small" color="primary">
-          Save
-        </Button>
+        {location.pathname === "/" ? (
+          <Button onClick={onClick} size="small" color="primary">
+            Save
+          </Button>
+        ) : (
+          <Button onClick={onClick}>Home</Button>
+        )}
       </CardActions>
     </Card>
   );
