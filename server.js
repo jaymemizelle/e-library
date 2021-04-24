@@ -9,6 +9,7 @@ const BooksApiRoutes = require('./routes/BooksApi');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan('tiny'))
+require('dotenv').config();
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
