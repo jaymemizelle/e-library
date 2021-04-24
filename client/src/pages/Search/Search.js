@@ -14,7 +14,7 @@ function Search() {
       link: "",
     },
   ]);
-  const [bookName, setBookName] = useState('');
+  const [bookName, setBookName] = useState("");
 
   useEffect(() => {
     // Google Books API call.
@@ -24,21 +24,19 @@ function Search() {
         `https://www.googleapis.com/books/v1/volumes?q=harry+potter&download=epub&key=${apiKey}`
       )
       .then((res) => {
-        const book = {
+        const book = [{
           title: res.data.items[0].volumeInfo.title,
           image: res.data.items[0].volumeInfo.imageLinks.thumbnail,
           author: res.data.items[0].volumeInfo.authors,
           description: res.data.items[0].searchInfo.textSnippet,
           link: res.data.items[0].volumeInfo.previewLink,
-        };
+        }];
         setBooks(book);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  const handleChange = (e) =>
-    setBookName(e.target.value.trim());
-    console.log("our book on handle change is: ", bookName);
+  const handleChange = (e) => setBookName(e.target.value.trim());
 
   const handleSearch = (e) => {
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
@@ -47,7 +45,6 @@ function Search() {
         `https://www.googleapis.com/books/v1/volumes?q=${bookName}&download=epub&key=${apiKey}`
       )
       .then((res) => {
-        console.log(res);
         const book = {
           title: res.data.items[0].volumeInfo.title,
           image: res.data.items[0].volumeInfo.imageLinks.thumbnail,
@@ -55,22 +52,22 @@ function Search() {
           description: res.data.items[0].searchInfo.textSnippet,
           link: res.data.items[0].volumeInfo.previewLink,
         };
-        setBooks(book);
+        setBooks((prevBooks) => [book, ...prevBooks]);
+        console.log("books state after search is: ", books);
       })
       .catch((err) => console.log(err));
   };
 
   const saveBook = async (e) => {
     e.preventDefault();
-    console.log(books);
     await axios
-      .post('/api/book', {
+      .post("/api/book", {
         title: books.title,
         image: books.image,
         author: books.author,
         description: books.description,
-        link: books.link
-    })
+        link: books.link,
+      })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
@@ -83,8 +80,7 @@ function Search() {
         onClick={handleSearch}
         onChange={handleChange}
       />
-      <BookCard imageUrl={books.image} title={books.title} description={books.description} preview={books.link} author={books.author} onClick={saveBook}/>
-      {/* {books.map((book) => (
+      {books.map((book) => (
         <BookCard
           imageUrl={book.image}
           title={book.title}
@@ -93,7 +89,7 @@ function Search() {
           author={book.author}
           onClick={saveBook}
         />
-      ))} */}
+      ))}
     </div>
   );
 }
