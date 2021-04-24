@@ -20,7 +20,7 @@ function Search() {
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
     axios
       .get(
-        `https://www.googleapis.com/books/v1/volumes?q=pride+prejudice&download=epub&key=${apiKey}`
+        `https://www.googleapis.com/books/v1/volumes?q=harry+potter&download=epub&key=${apiKey}`
       )
       .then((res) => {
         const book = {
@@ -54,6 +54,7 @@ function Search() {
           description: res.data.items[0].searchInfo.textSnippet,
           link: res.data.items[0].volumeInfo.previewLink,
         };
+        setBooks(book);
       })
       .catch((err) => console.log(err));
   };
