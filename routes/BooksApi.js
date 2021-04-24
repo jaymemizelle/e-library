@@ -13,12 +13,11 @@ Router.get("/books", async (req, res) => {
     }
 });
 
-Router.post("/book", async (req, res) => {
+Router.post("/book", (req, res) => {
     try {
         console.log("we got a book with: ", req.body);
-        const book = await Book.create(req.body);
-        res.status(201);
-        res.send(book._id);
+        Book.create(req.body).then((res)=> console.log(res))
+        res.status(201).json({message: "Book was saved!"});
     } catch (err) {
         res.status(501);
         console.log("error in the books post route: ", err);

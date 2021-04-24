@@ -25,7 +25,12 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/public/index.html"));
 });
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks");
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/googlebooks',  {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+}).then(console.log('Database Connected!')).catch(err => console.log(err))
 
 
 app.listen(PORT, () => {
