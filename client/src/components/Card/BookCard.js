@@ -21,6 +21,7 @@ const useStyles = makeStyles({
 });
 
 function BookCard({
+  amazonUrl,
   title,
   description,
   imageUrl,
@@ -33,9 +34,11 @@ function BookCard({
 
   const location = useLocation();
 
+  const buyLink = `https://www.amazon.com/s?k=${title}&ref=nb_sb_noss_2`;
+
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+     <a target="_blank" href={preview}><CardActionArea>
         <CardMedia
           className={classes.media}
           image={imageUrl}
@@ -44,17 +47,17 @@ function BookCard({
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             {title}
-            <p>{author}</p>
           </Typography>
+          <p>{author}</p>
           <Typography variant="body2" color="textSecondary" component="p">
             {description}
           </Typography>
         </CardContent>
-      </CardActionArea>
+      </CardActionArea></a>
       <CardActions>
-        <a rel="noopener noreferrer" target="_blank" href={preview}>
+        <a rel="noopener noreferrer" target="_blank" href={buyLink}>
           <Button size="small" color="primary">
-            View
+            Buy
           </Button>
         </a>
         {location.pathname === "/" ? (
