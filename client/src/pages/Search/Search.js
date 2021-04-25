@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Form from "../../components/Form/Form";
 import axios from "axios";
 import BookCard from "../../components/Card/BookCard";
+import API from "../../utils/API"
 require("dotenv").config();
 
 function Search() {
@@ -9,13 +10,7 @@ function Search() {
   const [bookName, setBookName] = useState("");
 
   useEffect(() => {
-    // Google Books API call.
-    const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
-    axios
-      .get(
-        `https://www.googleapis.com/books/v1/volumes?q=harry+potter&download=epub&key=${apiKey}`
-      )
-      .then((res) => {
+      API.getBook("Harry Potter").then((res) => {
         const book = [
           {
             title: res.data.items[0].volumeInfo.title,
@@ -33,12 +28,7 @@ function Search() {
   const handleChange = (e) => setBookName(e.target.value.trim());
 
   const handleSearch = (e) => {
-    const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
-    axios
-      .get(
-        `https://www.googleapis.com/books/v1/volumes?q=${bookName}&download=epub&key=${apiKey}`
-      )
-      .then((res) => {
+    API.getBook(bookName).then((res) => {
         const book = {
           title: res.data.items[0].volumeInfo.title,
           image: res.data.items[0].volumeInfo.imageLinks.thumbnail,
@@ -54,6 +44,7 @@ function Search() {
   const saveBook = async (e) => {
     e.preventDefault();
     const book = books[0];
+    // const book = books[e.target.id]
     await axios
       .post("/api/book", {
         title: book.title,
