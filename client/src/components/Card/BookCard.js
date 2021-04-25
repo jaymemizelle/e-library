@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import "./BookCard.css";
 import { useLocation } from "react-router-dom";
+import AlertBar from "../../components/AlertBar";
 
 const useStyles = makeStyles({
   root: {
@@ -58,10 +59,10 @@ function BookCard({
         </a>
         {location.pathname === "/" ? (
           <Button onClick={onClick} size="small" color="primary">
-            Save
+           <AlertBar label="Save Book" popupMessage="Book Saved!"/>
           </Button>
         ) : (
-          <Button onClick={onClick}>Home</Button>
+          <Button onClick={onClick}>Search</Button>
         )}
       </CardActions>
     </Card>

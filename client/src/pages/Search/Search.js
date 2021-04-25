@@ -5,15 +5,7 @@ import BookCard from "../../components/Card/BookCard";
 require("dotenv").config();
 
 function Search() {
-  const [books, setBooks] = useState([
-    {
-      title: "",
-      image: "",
-      author: "",
-      description: "",
-      link: "",
-    },
-  ]);
+  const [books, setBooks] = useState([]);
   const [bookName, setBookName] = useState("");
 
   useEffect(() => {
@@ -24,13 +16,15 @@ function Search() {
         `https://www.googleapis.com/books/v1/volumes?q=harry+potter&download=epub&key=${apiKey}`
       )
       .then((res) => {
-        const book = [{
-          title: res.data.items[0].volumeInfo.title,
-          image: res.data.items[0].volumeInfo.imageLinks.thumbnail,
-          author: res.data.items[0].volumeInfo.authors,
-          description: res.data.items[0].searchInfo.textSnippet,
-          link: res.data.items[0].volumeInfo.previewLink,
-        }];
+        const book = [
+          {
+            title: res.data.items[0].volumeInfo.title,
+            image: res.data.items[0].volumeInfo.imageLinks.thumbnail,
+            author: res.data.items[0].volumeInfo.authors,
+            description: res.data.items[0].searchInfo.textSnippet,
+            link: res.data.items[0].volumeInfo.previewLink,
+          },
+        ];
         setBooks(book);
       })
       .catch((err) => console.log(err));
@@ -53,22 +47,22 @@ function Search() {
           link: res.data.items[0].volumeInfo.previewLink,
         };
         setBooks((prevBooks) => [book, ...prevBooks]);
-        console.log("books state after search is: ", books);
       })
       .catch((err) => console.log(err));
   };
 
   const saveBook = async (e) => {
     e.preventDefault();
+    const book = books[0];
     await axios
       .post("/api/book", {
-        title: books.title,
-        image: books.image,
-        author: books.author,
-        description: books.description,
-        link: books.link,
+        title: book.title,
+        image: book.image,
+        author: book.author,
+        description: book.description,
+        link: book.link,
       })
-      .then((res) => console.log(res))
+      .then((res) => res.data.message)
       .catch((err) => console.log(err));
   };
 
