@@ -6,20 +6,27 @@
   height: 300px !important;
 }
 
-.makeStyles-root-5 {
-  max-width: 345px;
+.card {
   margin: 20px;
 }
 
-.makeStyles-media-6 {
+.cardImage {
   margin: 10px;
 }
 
 .MuiTypography-gutterBottom {
-    color: black;
+  color: black;
 }
 
 .author {
   color: black;
   font-weight: bold;
+}
+
+.MuiButtonBase-root.MuiCardActionArea-root, .MuiCardActions-root.MuiCardActions-spacing {
+  background-color: rgba(155, 154, 154, 0.6);
+}
+
+.MuiButtonBase-root.MuiCardActionArea-root {
+  height: 400px;
 }

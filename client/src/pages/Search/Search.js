@@ -3,7 +3,7 @@ import Form from "../../components/Form/Form";
 import axios from "axios";
 import BookCard from "../../components/BookCard/BookCard";
 import API from "../../utils/API"
-import "./search.css"
+import "./Search.css"
 require("dotenv").config();
 
 function Search() {
@@ -66,6 +66,7 @@ function Search() {
         onClick={handleSearch}
         onChange={handleChange}
       />
+      <div className="bookCardsDiv">
       {books.map((book) => (
         <BookCard
           imageUrl={book.image}
@@ -76,6 +77,7 @@ function Search() {
           onClick={saveBook}
         />
       ))}
+      </div>
     </div>
   );
 }

@@ -6,8 +6,8 @@ function Form( { buttonName, placeholder, onClick, onChange }) {
 
 
     return (
-        <div>
-            <TextField className="search"
+        <div className="search" >
+            <TextField
                 onChange={onChange}
                 style={{ margin: 8 }}
                 placeholder={placeholder}

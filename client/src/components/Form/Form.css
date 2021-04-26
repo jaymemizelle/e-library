@@ -2,3 +2,21 @@
     width: 50%;
     margin: 0 auto;
 }
+
+.search {
+    margin: 10px;
+    text-align: center;
+}
+
+/* .MuiInputBase-input.MuiFilledInput-input {
+    background-color: antiquewhite;
+} */
+
+.MuiInputBase-root.MuiFilledInput-root.MuiFilledInput-underline.MuiInputBase-fullWidth.MuiInputBase-formControl {
+    width: 50%;
+    background-color: rgb(235, 234, 232);
+    margin: 0 auto;
+}
+.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary {
+    background-color: steelblue;
+}

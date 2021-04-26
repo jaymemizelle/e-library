@@ -38,38 +38,44 @@ function BookCard({
   const buyLink = `https://www.amazon.com/s?k=${title}&ref=nb_sb_noss_2`;
 
   return (
-    <Card className={classes.root}>
-     <a style={{textDecoration: "none"}} target="_blank" href={preview}><CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={imageUrl}
-          title={imgTitle}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {title}
-          </Typography>
-          <p className="author">{author}</p>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {description}
-          </Typography>
-        </CardContent>
-      </CardActionArea></a>
-      <CardActions>
-        <a rel="noopener noreferrer" target="_blank" href={buyLink}>
-          <Button size="small" color="primary">
-            Buy
-          </Button>
+    <div className="card">
+      <Card className={classes.root}>
+        <a style={{ textDecoration: "none" }} target="_blank" href={preview}>
+          <CardActionArea>
+            <div className="cardImage">
+              <CardMedia
+                className={classes.media}
+                image={imageUrl}
+                title={imgTitle}
+              />
+            </div>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                {title}
+              </Typography>
+              <p className="author">{author}</p>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {description}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
         </a>
-        {location.pathname === "/" ? (
-          <Button onClick={onClick} size="small" color="primary">
-           <AlertBar label="Save Book" popupMessage="Book Saved!"/>
-          </Button>
-        ) : (
-          <Button onClick={onClick}>Search</Button>
-        )}
-      </CardActions>
-    </Card>
+        <CardActions>
+          <a style={{textDecoration: "none"}} rel="noopener noreferrer" target="_blank" href={buyLink}>
+            <Button className="cardButton">
+              Buy
+            </Button>
+          </a>
+          {location.pathname === "/" ? (
+            <Button className="cardButton" onClick={onClick}>
+              <AlertBar label="Save Book" popupMessage="Book Saved!" />
+            </Button>
+          ) : (
+            <Button className="cardButton" onClick={onClick}>Search</Button>
+          )}
+        </CardActions>
+      </Card>
+    </div>
   );
 }
 
