@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Form from "../../components/Form/Form";
 import axios from "axios";
-import BookCard from "../../components/Card/BookCard";
+import BookCard from "../../components/BookCard/BookCard";
 import API from "../../utils/API"
+import "./search.css"
 require("dotenv").config();
 
 function Search() {

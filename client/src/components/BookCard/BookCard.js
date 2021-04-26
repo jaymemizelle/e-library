@@ -9,7 +9,8 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import "./BookCard.css";
 import { useLocation } from "react-router-dom";
-import AlertBar from "../../components/AlertBar";
+import AlertBar from "../AlertBar";
+import "./BookCard.css";
 
 const useStyles = makeStyles({
   root: {
@@ -38,7 +39,7 @@ function BookCard({
 
   return (
     <Card className={classes.root}>
-     <a target="_blank" href={preview}><CardActionArea>
+     <a style={{textDecoration: "none"}} target="_blank" href={preview}><CardActionArea>
         <CardMedia
           className={classes.media}
           image={imageUrl}
@@ -48,7 +49,7 @@ function BookCard({
           <Typography gutterBottom variant="h5" component="h2">
             {title}
           </Typography>
-          <p>{author}</p>
+          <p className="author">{author}</p>
           <Typography variant="body2" color="textSecondary" component="p">
             {description}
           </Typography>

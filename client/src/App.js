@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavTabs from "./components/NavTabs/NavTabs";
 import Search from "../src/pages/Search/Search";
 import Library from "../src/pages/Library/Library";
+import "./App.css";
 
 
 function App() {

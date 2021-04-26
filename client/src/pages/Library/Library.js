@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import BookCard from "../../components/Card/BookCard";
+import BookCard from "../../components/BookCard/BookCard";
 import axios from "axios";
 
 function Library() {

@@ -1,0 +1,25 @@
+.MuiCardMedia-root {
+  background-size: contain !important;
+}
+
+.makeStyles-media-2 {
+  height: 300px !important;
+}
+
+.makeStyles-root-5 {
+  max-width: 345px;
+  margin: 20px;
+}
+
+.makeStyles-media-6 {
+  margin: 10px;
+}
+
+.MuiTypography-gutterBottom {
+    color: black;
+}
+
+.author {
+  color: black;
+  font-weight: bold;
+}
