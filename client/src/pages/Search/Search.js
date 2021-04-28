@@ -66,8 +66,10 @@ function Search() {
         onChange={handleChange}
       />
       <div className="bookCardsDiv">
-      {books.map((book) => (
+      {books.map((book, i) => (
         <BookCard
+          key={i}
+          index={i}
           imageUrl={book.image}
           title={book.title}
           description={book.description}
