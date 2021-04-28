@@ -11,7 +11,9 @@
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build",
-    "seed": "node scripts/seed.js"
+    "seed": "node scripts/seed.js",
+    "start": "node backend/server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build"
   },
   "author": "",
   "license": "ISC",
@@ -25,5 +27,8 @@
     "if-env": "^1.0.4",
     "mongoose": "^5.12.3",
     "morgan": "^1.10.0"
+  },
+  "engines": {
+    "node": "10.16.0"
   }
 }
