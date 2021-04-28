@@ -1,0 +1,11 @@
+.bookCardsDiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+h2.libraryTitle {
+  text-align: center;
+  color: whitesmoke;
+  font-weight: bold;
+}
