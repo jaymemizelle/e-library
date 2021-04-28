@@ -42,6 +42,7 @@ Click on the deployed application link to find and save the books you'd like to 
 
 ## Next Steps
 * Add tests to js files
+* Add additional features for user to login and delete saved shows
 
 ## Questions
 For additional questions please contact:
