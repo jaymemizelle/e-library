@@ -11,7 +11,7 @@ function Search() {
   const [bookName, setBookName] = useState("");
 
   useEffect(() => {
-      API.getBook("Harry Potter").then((res) => {
+      API.getBook("the zahir").then((res) => {
         const book = [
           {
             title: res.data.items[0].volumeInfo.title,
@@ -42,10 +42,9 @@ function Search() {
       .catch((err) => console.log(err));
   };
 
-  const saveBook = async (e) => {
-    e.preventDefault();
-    const book = books[0];
-    // const book = books[e.target.id]
+  const saveBook = async (i) => {
+    const book = books[i];
+    console.log(books, i)
     await axios
       .post("/api/book", {
         title: book.title,
@@ -74,7 +73,7 @@ function Search() {
           description={book.description}
           preview={book.link}
           author={book.author}
-          onClick={saveBook}
+          saveBook={saveBook}
         />
       ))}
       </div>

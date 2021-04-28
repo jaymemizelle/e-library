@@ -28,8 +28,9 @@ function BookCard({
   imageUrl,
   imgTitle,
   preview,
-  onClick,
+  saveBook,
   author,
+  index
 }) {
   const classes = useStyles();
 
@@ -67,11 +68,11 @@ function BookCard({
             </Button>
           </a>
           {location.pathname === "/" ? (
-            <Button className="cardButton" onClick={onClick}>
+            <Button className="cardButton" onClick={() => saveBook(index) }>
               <AlertBar label="Save Book" popupMessage="Book Saved!" />
             </Button>
           ) : (
-            <Button className="cardButton" onClick={onClick}>Search</Button>
+            <Button className="cardButton">Search</Button>
           )}
         </CardActions>
       </Card>
