@@ -3,7 +3,7 @@ import Form from "../../components/Form/Form";
 import axios from "axios";
 import BookCard from "../../components/BookCard/BookCard";
 import API from "../../utils/API";
-import "./Search.css";
+import "./Style.css";
 require("dotenv").config();
 
 function Search() {
