@@ -3,7 +3,7 @@
 # e-Library
 
 ## Description
-This is a responsive full-stack web application built with a React front-end, a MongoDB database, and an express server back-end. It allows the user to search and save books from a GoogleBooks API.
+This is a responsive full-stack MERN web application built with a React front-end, a MongoDB database, and an express server back-end. It allows the user to search and save books from a GoogleBooks API.
 
 ## Table of Contents
   - [Installation](#installation)
@@ -19,10 +19,13 @@ This is a responsive full-stack web application built with a React front-end, a 
 ``` npm i ```
 
 ## Deployment
-* Deployed Applicatin URL: 
+* Deployed Applicatin URL: https://sleepy-fjord-99481.herokuapp.com/
 
 ## Usage
 Click on the deployed application link to find and save the books you'd like to read!
+
+![search screenshot](./client/public/search.jpg "search")
+![search screenshot](./client/public/library.jpg "search")
 
 ## Technologies
 * MongoDB 
@@ -42,7 +45,7 @@ Click on the deployed application link to find and save the books you'd like to 
 
 ## Next Steps
 * Add tests to js files
-* Add additional features for user to login and delete saved shows
+* Add additional features for user to login and delete saved books
 
 ## Questions
 For additional questions please contact:
